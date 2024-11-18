@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "TestSPM",
+    name: "TestPackage",
     platforms: [
         .iOS(.v13),
         .macOS(.v10_12)
@@ -12,26 +12,31 @@ let package = Package(
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
-            name: "TestSPM",
-            targets: ["TestSPM"]),
+            name: "TestPackage",
+            targets: ["TestPackage"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/Alamofire/Alamofire.git", branch: "master")
+            .package(url: "https://github.com/marmelroy/Zip.git", from: "2.1.2"),
+            .package(path: "./Sources/PepNetworkingPackage")
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
-            name: "TestSPM",
+            name: "TestPackage",
             dependencies: [
-                .target(name: "Test"),
-                .product(name: "Alamofire", package: "Alamofire"),
+                .target(name: "BRLMPrinterKit"),
+                .target(name: "FWUpdateSDK"),
+                .product(name: "Zip", package: "Zip"),
             ]),
         .testTarget(
-            name: "TestSPMTests",
-            dependencies: ["TestSPM"]),
+            name: "TestPackageTests",
+            dependencies: ["TestPackage"]),
         .binaryTarget(
-            name: "Test",
-            path: "./Sources/Test.xcframework")
+            name: "BRLMPrinterKit",
+            path: "./Sources/BRLMPrinterKit.xcframework"),
+        .binaryTarget(
+            name: "FWUpdateSDK",
+            path: "./Sources/FWUpdateSDK.xcframework")
     ]
 )
