@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "TestPackage",
+    name: "TestPackageFRM",
     platforms: [
         .iOS(.v13),
         .macOS(.v10_12)
@@ -26,7 +26,6 @@ let package = Package(
             name: "TestPackage",
             dependencies: [
                 .target(name: "BRLMPrinterKit"),
-                //.target(name: "FWUpdateSDK"),
                 .product(name: "Zip", package: "Zip"),
             ]),
         .testTarget(
@@ -35,8 +34,5 @@ let package = Package(
         .binaryTarget(
             name: "BRLMPrinterKit",
             path: "./Sources/BRLMPrinterKit.xcframework")
-       /* .binaryTarget(
-            name: "FWUpdateSDK",
-            path: "./Sources/FWUpdateSDK.xcframework") */
     ]
 )
