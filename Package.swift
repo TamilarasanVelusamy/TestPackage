@@ -17,7 +17,6 @@ let package = Package(
     ],
     dependencies: [
             .package(url: "https://github.com/marmelroy/Zip.git", from: "2.1.2"),
-            .package(path: "./Sources/PepNetworkingPackage")
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
