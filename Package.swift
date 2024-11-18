@@ -25,18 +25,18 @@ let package = Package(
         .target(
             name: "TestPackage",
             dependencies: [
-               // .target(name: "BRLMPrinterKit"),
-                .target(name: "FWUpdateSDK"),
+                .target(name: "BRLMPrinterKit"),
+                //.target(name: "FWUpdateSDK"),
                 .product(name: "Zip", package: "Zip"),
             ]),
         .testTarget(
             name: "TestPackageTests",
             dependencies: ["TestPackage"]),
-     /*   .binaryTarget(
-            name: "BRLMPrinterKit",
-            path: "./Sources/BRLMPrinterKit.xcframework"), */
         .binaryTarget(
+            name: "BRLMPrinterKit",
+            path: "./Sources/BRLMPrinterKit.xcframework")
+       /* .binaryTarget(
             name: "FWUpdateSDK",
-            path: "./Sources/FWUpdateSDK.xcframework")
+            path: "./Sources/FWUpdateSDK.xcframework") */
     ]
 )
